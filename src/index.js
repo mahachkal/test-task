@@ -1,12 +1,46 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import { BrowserRouter } from 'react-router-dom';
+import reducer from './reducer';
+import App from './App'
+import './index.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const saveState = (state) => {
+  try {
+    const currentState = JSON.stringify(state);
+    window.localStorage.setItem('appState', currentState);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const loadState = () => {
+  try {
+    const currentState = window.localStorage.getItem('appState');
+      if (!currentState) {
+        return undefined;
+      }
+      return JSON.parse(currentState);
+    } catch (err) {
+      console.log(err);
+      return undefined;
+    }
+};
+
+const oldState = loadState();
+const store = createStore(reducer, oldState);
+
+store.subscribe(() => {
+    saveState(store.getState());
+});
+
+render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App store={store}/>
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
+);
