@@ -41,7 +41,7 @@ reqBody.set('token', token);
   .then(result => {
       if (result && result.status === 'ok') {
         alert('Задача отредактирована');
-        window.location.href = '/'
+        window.location.href = '/test-task'
       } else {
         alert(JSON.stringify(result.message));
         window.location.href = '/login';
