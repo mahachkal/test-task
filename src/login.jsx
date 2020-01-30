@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Login extends React.Component {
@@ -62,7 +63,7 @@ onChangePassword(e) {
           <input onChange={this.onChangePassword} />
           <input type="submit" value="Отправить" />
         </form>
-        <a href="/">К списку задач</a>
+        <Link to="/">К списку задач</Link>
       </div>
     )
   }

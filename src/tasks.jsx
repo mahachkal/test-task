@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
+import { Link } from 'react-router-dom'
 
 class Tasks extends React.Component {
   constructor(props) {
@@ -58,14 +59,6 @@ class Tasks extends React.Component {
     this.setState({ sort_direction: e.target.value });  
     this.fetchTasks('', '', e.target.value);
   }
-  
-  handleOut() {
-    this.props.deleteToken();
-    const currentState = window.localStorage.getItem('appState');
-    delete currentState.token;
-    window.localStorage.setItem('appState', currentState);
-    
-  }
 
 
   
@@ -75,14 +68,8 @@ class Tasks extends React.Component {
     return (
     <div>
       <div className="data-item">
-        {token ?
-        <form onSubmit={() => this.handleOut()} name="out">
-          <input type="submit" value="Выйти"/>
-        </form> :
-          <a href="/login">Войти</a>
-        }
         <h3>Список Задач</h3>
-        <a href="/create">Добавить задачу</a>
+        <Link to="/create">Добавить задачу</Link>
         <form name="sort">
           <select onChange={(e) => this.onChangeSort_field(e)} name="sort_field">
             <option value="id">id</option> 
@@ -110,7 +97,7 @@ class Tasks extends React.Component {
                   }
                   {
                     token &&
-                    <a href={`/edit/${task.id}`}>Отредактировать задачу</a>
+                    <Link to={`/edit/${task.id}`}>Отредактировать задачу</Link>
                   }
                   {this.props.id == task.id &&
                   <div>Отредактировано Администратором</div>

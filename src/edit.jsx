@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Edit extends React.Component {
   constructor(props) {
@@ -93,8 +94,7 @@ reqBody.set('token', token);
           }
           <input type="submit" value="Отредактировать" />
         </form>
-        <a href="/">К списку задач</a>
-          <div>{this.props.store.getState().token}</div>
+        <Link to="/">К списку задач</Link>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Create extends React.Component {
@@ -73,7 +74,7 @@ onChangeText(e) {
           <input onChange={this.onChangeText} />
           <input type="submit" value="Отправить" />
         </form>
-        <a href="/">К списку задач</a>
+        <Link to="/">К списку задач</Link>
       </div>
     )
   }

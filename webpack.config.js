@@ -1,7 +1,7 @@
 const path = require('path');
 
 exports default {
-  entry: "./src/index.js",
+  entry: "./src/index.",
   output:{
       path: path.resolve(__dirname, './public'), 
       publicPath: '/public/',
