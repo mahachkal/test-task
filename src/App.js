@@ -28,7 +28,7 @@ class App extends React.Component {
             <Link to="/login">Войти</Link>
           }
           <Switch>
-            <Route exact path="/" render={(props) => ( <Tasks {...this.props}/>)} />
+            <Route exact path="/test-task" render={(props) => ( <Tasks {...this.props}/>)} />
             <Route exact path="/create" render={(props) => <Create {...this.props} />} />
             <Route exact path="/edit/:id" render={(props) => <Edit {...this.props} />} />
             <Route exact path="/login" render={(props) => <Login {...this.props} />} />
