@@ -63,7 +63,7 @@ onChangePassword(e) {
           <input onChange={this.onChangePassword} />
           <input type="submit" value="Отправить" />
         </form>
-        <Link to="/">К списку задач</Link>
+        <Link to="/test-task">К списку задач</Link>
       </div>
     )
   }
