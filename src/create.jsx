@@ -34,7 +34,7 @@ handleSubmit() {
     .then(result => {
       if (result && result.status === 'ok') {
         alert('Задача cоздана');
-        window.location.href = '/'
+        window.location.href = '/test-task'
       } else {
         alert(JSON.stringify(result.message))
       }
