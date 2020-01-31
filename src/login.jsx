@@ -31,6 +31,9 @@ handleSubmit() {
     .then(result => {
       if (result && result.status === 'ok') {
         this.props.addToken(result.message.token);
+        const currentState = window.localStorage.getItem('appState');
+        currentState.token = result.message.token;
+        window.localStorage.setItem('appState', currentState);
         window.location.href = '/test-task'
       } else {
         alert(JSON.stringify(result.message));
