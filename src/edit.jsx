@@ -29,7 +29,7 @@ componentDidUnmount() {
 handleSubmit() {
 const { reqBody } = this.state;
 const currentState = window.localStorage.getItem('appState');
-const token = currentState.token;
+const token = this.props.store.getState().token;
 reqBody.set('token', token);
   fetch(`https://uxcandy.com/~shapoval/test-task-backend/v2/edit/${this.state.task.id}?developer=VladimirOleynik`, {
     method: 'POST',
