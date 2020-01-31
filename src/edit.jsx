@@ -44,6 +44,7 @@ reqBody.set('token', token);
         window.location.href = '/test-task'
       } else {
         alert(JSON.stringify(result.message));
+        window.location.href = '/test-task';
         window.location.href = '/login';
       }
     })
